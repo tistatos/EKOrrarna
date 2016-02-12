@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body ng-app='ekorrarna'>
+
+		<lungDirective></lungDirective>
+
+		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<!--<script type="text/javascript" src="js/main.js"></script>-->
+
+		<script type="text/javascript">
+
+
+			// D3 factory
+			angular.module('ekorrarna', [])
+			  .factory('d3Service', ['$document', '$q', '$rootScope',
+			    function($document, $q, $rootScope) {
+			      var d = $q.defer();
+			      function onScriptLoad() {
+			        // Load client in the browser
+			        $rootScope.$apply(function() { d.resolve(window.d3); });
+			        console.log('script load')
+			      }
+			      // Create a script tag with d3 as the source
+			      // and call our onScriptLoad callback when it
+			      // has been loaded
+			      var scriptTag = $document[0].createElement('script');
+			      scriptTag.type = 'text/javascript'; 
+			      scriptTag.async = true;
+			      scriptTag.src = 'http://d3js.org/d3.v3.min.js';
+			      scriptTag.onreadystatechange = function () {
+			        if (this.readyState == 'complete') onScriptLoad();
+			      }
+			      scriptTag.onload = onScriptLoad;
+			 
+			      var p = $document[0].createElement('p');
+			      p.text = 'yoyoyo';
+			      var s = $document[0].getElementsByTagName('body')[0];
+			      s.appendChild(scriptTag);
+			 
+			      return {
+			        d3: function() { return d.promise; }
+			      };
+			}]);
+			// Controller
+			angular.module('ekorrarna').controller('mainController', function() {});
+			// lungDirective
+			angular.module('ekorrarna')
+			  .directive('lungDirective', ['d3Service', function(d3Service) {
+			    return {
+			      link: function(scope, element, attrs) {
+			      	console.log('yoyoyyo')
+			        d3Service.d3().then(function(d3) {
+			        	
+			          var svg = d3.select(ele[0])
+			            .append('svg')
+			            .style('width', '100%');
+			 
+			          // Browser onresize event
+			          window.onresize = function() {
+			            scope.$apply();
+			          };
+			 
+			          // hard-code data
+			          scope.data = [
+			            {name: "Greg", score: 98},
+			            {name: "Ari", score: 96},
+			            {name: 'Q', score: 75},
+			            {name: "Loser", score: 48}
+			          ];
+			 
+			          // Watch for resize event
+			          scope.$watch(function() {
+			            return angular.element($window)[0].innerWidth;
+			          }, function() {
+			            scope.render(scope.data);
+			          });
+			          	console.log('rendering')
+			 
+			          scope.render = function(data) {
+
+			          	console.log('rendering')
+			          	var mySquare=svg.append("rect")
+									  .attr("x",60)
+									  .attr("y",60)
+									  .attr("width",60)
+									  .attr("height",60);
+			            // our custom d3 code
+			          }
+			        });
+			      }};
+			  }]);
+
+		</script>
+
+	</body>
+</html>
