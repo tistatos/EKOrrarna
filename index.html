@@ -10,8 +10,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body ng-app='ekorrarna'>
+		<div ng-controller='mainController'>{{greeting}}</div>
 
-		<lungDirective></lungDirective>
+		<lungdirective></lungdirective>
 
 		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
@@ -20,8 +21,10 @@
 		<script type="text/javascript">
 
 
+			var app = angular.module('ekorrarna',[]);
 			// D3 factory
-			angular.module('ekorrarna', [])
+			
+			app
 			  .factory('d3Service', ['$document', '$q', '$rootScope',
 			    function($document, $q, $rootScope) {
 			      var d = $q.defer();
@@ -51,17 +54,51 @@
 			        d3: function() { return d.promise; }
 			      };
 			}]);
+			
 			// Controller
-			angular.module('ekorrarna').controller('mainController', function() {});
+			
+			app.controller('mainController', ['$scope', function($scope) {
+			  $scope.greeting = 'Hola!';
+
+			}]);
+
 			// lungDirective
+			
 			angular.module('ekorrarna')
-			  .directive('lungDirective', ['d3Service', function(d3Service) {
+			  .directive('lungdirective', ['d3Service', function(d3Service) {
 			    return {
 			      link: function(scope, element, attrs) {
-			      	console.log('yoyoyyo')
+/*
+							Färger: 
+							Lila - #592473
+							Grön - #366841
+							Rosa - #b10d61
+							Orange - #ce5e1c
+							Gul - #f4df10
+							Blå - #009cd8
+							*/
+    				  	var pos = [
+						  		{
+						  			x: 0,
+						  			y: 0
+						  		},
+						  		{
+						  			x: 0,
+						  			y: 1
+						  		},
+						  		{
+						  			x: 1,
+						  			y: 0
+						  		},
+						  		{
+						  			x: 1,
+						  			y: 1
+						  		},
+						  	];
+
 			        d3Service.d3().then(function(d3) {
 			        	
-			          var svg = d3.select(ele[0])
+			          var svg = d3.select(element[0])
 			            .append('svg')
 			            .style('width', '100%');
 			 
@@ -80,7 +117,7 @@
 			 
 			          // Watch for resize event
 			          scope.$watch(function() {
-			            return angular.element($window)[0].innerWidth;
+			            return angular.element(window)[0].innerWidth;
 			          }, function() {
 			            scope.render(scope.data);
 			          });
@@ -89,11 +126,15 @@
 			          scope.render = function(data) {
 
 			          	console.log('rendering')
-			          	var mySquare=svg.append("rect")
-									  .attr("x",60)
-									  .attr("y",60)
-									  .attr("width",60)
-									  .attr("height",60);
+			          	pos.forEach(item => {
+
+			          		var mySquare=svg.append("rect")
+										  .attr("x",item.x*60)
+										  .attr("y",item.y*60)
+										  .attr("width",60)
+										  .attr("height",60)
+										  .style("fill",'#592473');
+			          	})
 			            // our custom d3 code
 			          }
 			        });
