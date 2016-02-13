@@ -19,7 +19,7 @@ angular.module('ekorrarna')
 	  link: function(scope, element, attrs) {
 
 	    d3Service.d3().then(function(d3) {
-	    	
+
 	      svg = d3.select(element[0])
 	        .append('svg')
 	        .style('width', '100%')
@@ -32,7 +32,6 @@ angular.module('ekorrarna')
 
         scope.$parent.$on('newData', function() {
         	scope.render();
-        	console.log("recieved");
       	});
 
 	      // Watch for resize event
@@ -75,3 +74,4 @@ angular.module('ekorrarna')
       }
   }};
 }]);
+
