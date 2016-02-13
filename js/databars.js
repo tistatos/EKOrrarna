@@ -38,7 +38,7 @@ return {
         var dataWidth = (scope.measurement.data/scope.measurement.max)*barWidth
         dataWidth = Math.max(0,Math.min(dataWidth,barWidth));
         scope.databar.transition().attr("width",dataWidth).duration(2000).ease("linear");
-
+        scope.text.text(scope.measurement.data);
         if(oldVal-scope.measurement.data > 0 && upTrend) {
           scope.arrow.transition().duration(800).attrTween("transform",tweenP);
           oldVal = scope.measurement.data;
@@ -88,7 +88,7 @@ return {
             .attr("height", 22)
             .style("fill", "black");
 
-
+          scope.text = svg.append("text").text(scope.measurement.data).attr("x", 10).attr("y", 13).attr("dy", ".35em");
           var pts = '245, 0, 250, 10, 247,10, 247, 20 242,20 242,10 240,10 245,0';
           if(scope.arrow) {
           }
