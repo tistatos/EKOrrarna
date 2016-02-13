@@ -43,50 +43,57 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
     $scope.actions= [
     {
       "title": "Åk kollektivt",
-      "text": "",
-      "image": ""
+      "text": "Visste du att forskning visar att den som åker kollektivt rör sig i genomsnitt fyra gånger mer per dag än den som åker bil?",
+      "image": "kollektivt.png"
     },
     {
-      "title": "",
-      "text": "",
-      "image": ""
+      "title": "Gå eller cykla när det är möjligt",
+      "text": "För varje mil du cyklar eller går istället för att åka bil minskar du nybildningen av koldioxid från förbränning av bensin med 2.4 kilo",
+      "image": "gacykla.png"
     },
     {
-      "title": "",
-      "text": "",
-      "image": ""
+      "title": "Minska mängden halkbekämpningssalt och sand (reducerar partiklar)",
+      "text": "Försök att minska mängden salt under vinterhalvåret vid bekämpning av is",
+      "image": "salt.png"
     },
     {
-      "title": "",
-      "text": "",
-      "image": ""
+      "title": "Vid körning accelerera gradvis och följa hastighetsbestämmelsen",
+      "text": "På detta sätt minskar du utsläppen från avgaser och slitage på däck",
+      "image": "acceleration.png"
     },
     {
-      "title": "",
-      "text": "",
-      "image": ""
+      "title": "Kontrollera att dina däck är korrekt pumpade",
+      "text": "Med rätt lufttryck slits däcken mindre och det går åt mindre drivmedel",
+      "image": "dack.png"
     },
     {
-      "title": "",
-      "text": "",
-      "image": ""
+      "title": "Vid körning försök att motorbromsa",
+      "text": "Genom att motorbromsa slits bromsarna mindre",
+      "image": "motorbromsa.png"
     },
     {
-      "title": "",
-      "text": "",
-      "image": ""
+      "title": "Samåk exempelvis genom att använd skjutsgruppen.se",
+      "text": "Ett utmärkt sätt att ersätta det egna bilåkandet är att åka med andra",
+      "image": "skjutsgrupp.png"
     },
     {
-      "title": "",
-      "text": "",
-      "image": ""
+      "title": "Ät närproducerat, och eller ekologiskt",
+      "text": "Vid leveranser av varor från andra länder blir det stora utsläpp, välj därför om möjligt att äta närproducerat",
+      "image": "ekologiskt.png"
     },
     {
-      "title": "",
-      "text": "",
-      "image": ""
-    },
-      ]
+      "title": "Avstå från att skjuta fyrverkerier",
+      "text": "Många fyrverkerier innehåller ämen som inte är bra för dig eller naturen. Välj därför att avstå från att skjuta upp egna fyrverkerier",
+      "image": "fyrverkerier.png"
+    }
+    ]
+
+
+    var rand =Math.round( Math.random()*9);
+    console.log(rand);
+    $scope.firstAction = $scope.actions[rand];
+    $scope.secondAction = $scope.actions[(rand+1)%9];
+    $scope.thirdAction = $scope.actions[(rand+2)%9];
 
 
 
@@ -154,6 +161,7 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
       $scope.Bensen.data =  $scope.allData.Bensen;
       $scope.CO.data = $scope.allData.CO;
 
+
 			$scope.badThings = [];
 			$scope.badThings.push(($scope.allData.Bensen < 0) ? 0 : $scope.allData.Bensen);
 			$scope.badThings.push(($scope.allData.CO < 0) ? 0 : $scope.allData.CO);
@@ -174,7 +182,8 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				}
 				i++;
 			}
-			$scope.$emit('newData');
+
+      $scope.$emit('newData');
     }
 
 
@@ -217,10 +226,11 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				total += b;
 				finalArray.push(b);
 			}
-			if(total < 10) {
-				console.log('oh no total is  ' + total);
-				finalArray[finalArray.length-1]++;
-			}
+      if(total < 10) {
+        console.log('oh no total is  ' + total);
+        finalArray[finalArray.length-1]++;
+      }
+
 			return finalArray;
 
 		}
