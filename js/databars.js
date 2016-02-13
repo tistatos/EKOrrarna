@@ -111,6 +111,7 @@ return {
 					  .style("stroke-width", 0)
 					  .style("stroke",'#009cd8')
 					  .style("fill",'#999999');
+          scope.text = svg.append("text").text("värde saknas").attr("x", 10).attr("y", 13).attr("dy", ".35em");
         }
       }
     });
