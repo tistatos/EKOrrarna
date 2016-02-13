@@ -9,8 +9,10 @@ angular.module('ekorrarna')
           request.send(null)
   var pos = JSON.parse(request.responseText);
 
+  var numberOfDots = 20;
   var radius = 7;
   var circleDistance = radius*2 + 2;
+  var lungHeight = (radius*2 + 2)*(numberOfDots+2);
 
 	return {
 		scope: true,
@@ -20,8 +22,8 @@ angular.module('ekorrarna')
 	    	
 	      svg = d3.select(element[0])
 	        .append('svg')
-	        .style('width', '40%')
-	        .style('height', '100vw');
+	        .style('width', '100%')
+	        .style('height', lungHeight);
 
 	      // Browser onresize event
 	      window.onresize = function() {

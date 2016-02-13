@@ -7,33 +7,6 @@ return {
     measurement: '=measure'
   },
   link: function(scope, element, attrs) {
-		/*
-		Färger:
-		Lila - #592473
-		Grön - #366841
-		Rosa - #b10d61
-		Orange - #ce5e1c
-		Gul - #f4df10
-		Blå - #009cd8
-		*/
-	  	var pos = [
-	  		{
-	  			x: 0,
-	  			y: 0
-	  		},
-	  		{
-	  			x: 0,
-	  			y: 1
-	  		},
-	  		{
-	  			x: 1,
-	  			y: 0
-	  		},
-	  		{
-	  			x: 1,
-	  			y: 1
-	  		},
-	  	];
 
     d3Service.d3().then(function(d3) {
       var svg = d3.select(element[0])
@@ -49,19 +22,40 @@ return {
       scope.$watch(function() {
         return angular.element(window)[0].innerWidth;
       }, function() {
-        scope.render(scope.data);
+        scope.render();
       });
 
-      scope.render = function(data) {
-        console.log(attrs.measure);
-        console.log(scope.measurement);
+      scope.$parent.$on('newData', function() {
+        scope.render();
+        console.log("recieved");
+      });
+
+      scope.render = function() {
+        var avgPos = (scope.measurement.avg/scope.measurement.max)*300
+        var dataWidth = (scope.measurement.data/scope.measurement.max)*300
+        var dataWidth = Math.min(dataWidth,300);
         //pos.forEach(item => {
       		var mySquare=svg.append("rect")
-						.attr("x",60)
-						.attr("y",60)
-					  .attr("width", scope.measurement.data)
-					  .attr("height",scope.measurement.max)
-					  .style("fill",'#009cd8');
+						.attr("x",0)
+						.attr("y",0)
+            .attr("width", 300)
+            .attr("height", 22)
+					  .style("stroke-width",2)
+					  .style("stroke",'#009cd8')
+					  .style("fill",'#dddddd');
+
+          svg.append("rect")
+            .attr("x", 2)
+            .attr("y", 2)
+            .attr("width", dataWidth)
+            .attr("height", 19)
+            .style("fill", "green");
+          svg.append("rect")
+            .attr("x", avgPos)
+            .attr("y", 0)
+            .attr("width", 3)
+            .attr("height", 22)
+            .style("fill", "blue");
         //})
         // our custom d3 code
       }

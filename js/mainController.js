@@ -1,15 +1,18 @@
 // Controller
 angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', function($scope, luftdata) {
-  $scope.greeting = 'Hola';
-    $scope.allData = luftdata.getData(2,8,1);
-    $scope.maxData = luftdata.getMaxData();
 
-    console.log($scope.allData);
-    $scope.PM10 = {data: $scope.allData.PM10, max: $scope.maxData.PM10 };
-    $scope.NO2 = {data: $scope.allData.NO2, max: $scope.maxData.NO2 };
-    $scope.O3 = {data: $scope.allData.Ozon, max: $scope.maxData.O3 };
-    $scope.Bensen = {data: $scope.allData.Bensen, max: $scope.maxData.Bensen };
-    $scope.CO = {data: $scope.allData.CO, max: $scope.maxData.CO };
+    $scope.day = 1;
+    $scope.month = 1;
+    $scope.hour = 1;
+    $scope.maxData = luftdata.getMaxData();
+    $scope.avgData = luftdata.getAvgData();
+
+    $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour);
+    $scope.PM10 = {data: $scope.allData.PM10, max: $scope.maxData.PM10, avg: $scope.avgData.PM10 };
+    $scope.NO2 = {data: $scope.allData.NO2, max: $scope.maxData.NO2,  avg: $scope.avgData.NO2};
+    $scope.O3 = {data: $scope.allData.Ozon, max: $scope.maxData.O3,  avg: $scope.avgData.O3};
+    $scope.Bensen = {data: $scope.allData.Bensen, max: $scope.maxData.Bensen,  avg: $scope.avgData.Bensen};
+    $scope.CO = {data: $scope.allData.CO, max: $scope.maxData.CO,  avg: $scope.avgData.CO};
 		/*
 		Färger:
 		Lila - #592473	bensen
@@ -42,7 +45,16 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 		$scope.amount = getRealtimeData();
 
 		$scope.amountColors = [];
-
+    $scope.increase = function() {
+      $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour++);
+      $scope.PM10 = {data: $scope.allData.PM10, max: $scope.maxData.PM10, avg: $scope.avgData.PM10 };
+      $scope.NO2 = {data: $scope.allData.NO2, max: $scope.maxData.NO2,  avg: $scope.avgData.NO2};
+      $scope.O3 = {data: $scope.allData.Ozon, max: $scope.maxData.O3,  avg: $scope.avgData.O3};
+      $scope.Bensen = {data: $scope.allData.Bensen, max: $scope.maxData.Bensen,  avg: $scope.avgData.Bensen};
+      $scope.CO = {data: $scope.allData.CO, max: $scope.maxData.CO,  avg: $scope.avgData.CO};
+      console.log("emitted")
+      $scope.$emit('newData');
+    }
 		var u = 0;
 		var i = 0;
 		while(u < 10) {

@@ -78788,9 +78788,20 @@ var luftdata = [
     return {
       "PM10": 35,
       "NO2": 60,
+      "SO2": 200,
       "O3": 120,
       "Bensen": 5,
       "CO": 60,
+    }
+  }
+  data.getAvgData = function() {
+    return {
+      "PM10": 20,
+      "NO2": 40,
+      "SO2":20,
+      "O3": 50,
+      "CO": 40,
+      "Bensen": 1,
     }
   }
   return data;
