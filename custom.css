@@ -23,6 +23,10 @@ p{
 font-weight: 200;
 }
 
+.row{
+	height: 10%;
+}
+
 .col{
 	border: 1px #fff;
 }
@@ -39,6 +43,7 @@ font-weight: 200;
 
 .matvarden{
 	text-transform: uppercase;
+	margin-bottom: -15%;
 }
 
 .lila{
@@ -71,4 +76,8 @@ a {
 
 a:hover {
 
+}
+
+.row{
+	height: 10%;
 }

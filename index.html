@@ -16,40 +16,46 @@
 	<div ng-controller='mainController'>
 
     <div class="row">
+      
       <div class="col-xs-6">
         <lungdirective>
         	<!--<img src="img/spit.png" height="100" width="100">-->
         </lungdirective>
       </div>
+
       <div class="col-xs-6">
-          <h1>Luftkvalitet i Stockholm</h1>
+          <h1>Dina lungor i Stockholm</h1>
+          <p>PLACEHOLDER - Detta är ett bidrag i Smart Cities Green Hackathon 2015. Utmaningen presenterades av Sweco och handlar om att konceptualisera smart stadsanvändning av sensorer.</p>
+          
           <div class="row">
             <div class="col-xs-6 bla matvarden">
-              <h3>Luftpartiklar (PM10)</h3>
+              <h4>Luftpartiklar (PM10)</h4>
               <databar measure="PM10"></databar>
             </div>
             <div class="col-xs-6 orange matvarden">
-              <h3>Kvävedioxid (NO<sub>2</sub>)</h3>
+              <h4>Kvävedioxid (NO<sub>2</sub>)</h4>
               <databar measure="NO2"></databar>
             </div>
           </div>
+
           <div class="row">
             <div class="col-xs-6 gron matvarden">
-             <h3> Svaveldioxid (SO<sub>2</sub>)</h3>
+             <h4> Svaveldioxid (SO<sub>2</sub>)</h4>
               <databar measure="" disabled="true"></databar>
             </div>
             <div class="col-xs-6 gul matvarden">
-             <h3>Ozon (O<sub>3</sub>)</h3>
+             <h4>Ozon (O<sub>3</sub>)</h4>
               <databar measure="O3"></databar>
             </div>
           </div>
+
           <div class="row">
             <div class="col-xs-6 rosa matvarden">
-              <h3>Kolmonoxid (CO)</h3>
+              <h4>Kolmonoxid (CO)</h4>
               <databar measure="CO"></databar>
             </div>
             <div class="col-xs-6 lila matvarden">
-              <h3>Lättflyktiga kolväten (VOC)</h3>
+              <h4>Lättflyktiga kolväten (VOC)</h4>
               <databar measure="Bensen"></databar>
             </div>
         </div>
