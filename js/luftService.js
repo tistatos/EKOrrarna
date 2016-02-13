@@ -78783,8 +78783,17 @@ var luftdata = [
     var index =((month-1)*days[month]*24)+((day-1)*24)+hour-1;
     console.log(index)
     return luftdata[index];
-  }
+  },
 
+  data.getMaxData = function() {
+    return {
+      "PM10": 35,
+      "NO2": 60,
+      "O3": 120,
+      "Bensen": 5,
+      "CO": 60,
+    }
+  }
   return data;
 }]);
 

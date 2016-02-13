@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="custom.css">
 	</head>
 	<body ng-app='ekorrarna'>
-		<div ng-controller='mainController'>{{greeting}}</div>
+		<div ng-controller='mainController'>{{greeting}}
 
     <div class="row">
       <div class="col-xs-6">
@@ -24,33 +24,37 @@
         <div class="row">
           <div class="col-xs-6">
             PM10
+            <databar measure="PM10"></databar>
           </div>
           <div class="col-xs-6">
             NO2
+            <databar measure="NO2"></databar>
           </div>
         </div>
       </div>
       <div class="col-xs-6">
         <div class="row">
           <div class="col-xs-6">
-            SO2
           </div>
           <div class="col-xs-6">
           O3
+            <databar measure="O3"></databar>
           </div>
         </div>
       </div>
       <div class="col-xs-6">
         <div class="row">
           <div class="col-xs-6">
-            CO2
-          </div>
+            CO
+           <databar measure="CO"></databar>
+           </div>
           <div class="col-xs-6">
           VOC
+            <databar measure="Bensen"></databar>
           </div>
         </div>
       </div>
-
+</div>
     </div>
     <div class="row">
       <div class="col-xs-12">Detta kan du göra för att minska din klimatpåverkan</div>
@@ -80,6 +84,7 @@
 		<script src="js/mainController.js"></script>
 		<script src="js/lungdirective.js"></script>
 		<script src="js/luftService.js"></script>
+		<script src="js/databars.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
