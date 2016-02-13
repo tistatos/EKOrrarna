@@ -133,17 +133,6 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
       $scope.increase();
     },700);
 
-    $scope.increase = function() {
-      $scope.hour++;
-      $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour);
-      $scope.PM10.data =  $scope.allData.PM10;
-      $scope.NO2.data = $scope.allData.NO2;
-      $scope.O3.data = $scope.allData.Ozon;
-      $scope.Bensen.data =  $scope.allData.Bensen;
-      $scope.CO.data = $scope.allData.CO;
-      $scope.$emit('newData');
-    }
-
 		var u = 0;
 		var i = 0;
 		while(u < 10) {
@@ -157,13 +146,13 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 
     $scope.increase = function() {
 
-      $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour++);
-      $scope.PM10 = {data: $scope.allData.PM10, max: $scope.maxData.PM10, avg: $scope.avgData.PM10 };
-      $scope.NO2 = {data: $scope.allData.NO2, max: $scope.maxData.NO2,  avg: $scope.avgData.NO2};
-      $scope.O3 = {data: $scope.allData.Ozon, max: $scope.maxData.O3,  avg: $scope.avgData.O3};
-      $scope.Bensen = {data: $scope.allData.Bensen, max: $scope.maxData.Bensen,  avg: $scope.avgData.Bensen};
-      $scope.CO = {data: $scope.allData.CO, max: $scope.maxData.CO,  avg: $scope.avgData.CO};
-
+      $scope.hour++;
+      $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour);
+      $scope.PM10.data =  $scope.allData.PM10;
+      $scope.NO2.data = $scope.allData.NO2;
+      $scope.O3.data = $scope.allData.Ozon;
+      $scope.Bensen.data =  $scope.allData.Bensen;
+      $scope.CO.data = $scope.allData.CO;
 
 			$scope.badThings = [];
 			$scope.badThings.push(($scope.allData.Bensen < 0) ? 0 : $scope.allData.Bensen);
@@ -185,9 +174,7 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				}
 				i++;
 			}
-
-      console.log("emitted")
-      $scope.$emit('newData');
+			$scope.$emit('newData');
     }
 
 
@@ -229,6 +216,10 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				var b = Math.round(getPercentage(newArray[i], totalPercentage));
 				total += b;
 				finalArray.push(b);
+			}
+			if(total < 10) {
+				console.log('oh no total is  ' + total);
+				finalArray[finalArray.length-1]++;
 			}
 			return finalArray;
 
