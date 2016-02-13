@@ -1,11 +1,10 @@
 body {
 	width: 100%;
 	height: 100%;
-
-  background-color: #222;
-  color: #fff;
-  font-weight: 800;
-  padding: 1.5%;
+  	background-color: #222;
+  	color: #fff;
+  	font-weight: 800;
+  	padding: 1.5%;
 }
 
 h1{
@@ -24,6 +23,10 @@ p{
 font-weight: 200;
 }
 
+.row{
+	height: 10%;
+}
+
 .col{
 	border: 1px #fff;
 }
@@ -40,7 +43,7 @@ font-weight: 200;
 
 .matvarden{
 	text-transform: uppercase;
-	font-size: 2em;
+	margin-bottom: -15%;
 }
 
 .lila{
@@ -73,4 +76,8 @@ a {
 
 a:hover {
 
+}
+
+.row{
+	height: 10%;
 }

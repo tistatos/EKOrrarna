@@ -16,40 +16,46 @@
 	<div ng-controller='mainController'>
 
     <div class="row">
+      
       <div class="col-xs-6">
         <lungdirective>
         	<!--<img src="img/spit.png" height="100" width="100">-->
         </lungdirective>
       </div>
+
       <div class="col-xs-6">
-          <h1>Luftkvalitet i Stockholm</h1>
+          <h1>Dina lungor i Stockholm</h1>
+          <p>PLACEHOLDER - Detta är ett bidrag i Smart Cities Green Hackathon 2015. Utmaningen presenterades av Sweco och handlar om att konceptualisera smart stadsanvändning av sensorer.</p>
+          
           <div class="row">
             <div class="col-xs-6 bla matvarden">
-              Luftpartiklar (PM10)
+              <h4>Luftpartiklar (PM10)</h4>
               <databar measure="PM10"></databar>
             </div>
             <div class="col-xs-6 orange matvarden">
-              Kvävedioxid (NO<sub>2</sub>)
+              <h4>Kvävedioxid (NO<sub>2</sub>)</h4>
               <databar measure="NO2"></databar>
             </div>
           </div>
+
           <div class="row">
             <div class="col-xs-6 gron matvarden">
-              Svaveldioxid (SO<sub>2</sub>)
+             <h4> Svaveldioxid (SO<sub>2</sub>)</h4>
               <databar measure="" disabled="true"></databar>
             </div>
             <div class="col-xs-6 gul matvarden">
-              Ozon (O<sub>3</sub>)
+             <h4>Ozon (O<sub>3</sub>)</h4>
               <databar measure="O3"></databar>
             </div>
           </div>
+
           <div class="row">
             <div class="col-xs-6 rosa matvarden">
-              Koldioxid (CO<sub>2</sub>)
+              <h4>Kolmonoxid (CO)</h4>
               <databar measure="CO"></databar>
             </div>
             <div class="col-xs-6 lila matvarden">
-              Lättflyktiga kolväten (VOC)
+              <h4>Lättflyktiga kolväten (VOC)</h4>
               <databar measure="Bensen"></databar>
             </div>
         </div>
@@ -102,32 +108,33 @@
 
     <footer class="row">
       <div class="col-xs-4">
-        <div class="row">Green Hackathon</div>
+        <div class="row"><h3>Green Hackathon</h3></div>
       </div>
       <div class="col-xs-4">
-        <div class="row">Datakällor</div>
+        <div class="row"><h3>Datakällor</h3></div>
       </div>
       <div class="col-xs-4">
         <div class="row"><img src="img/lugnalungan_small.png" alt="logo" class="logostorlek"></div>
       </div>
       <div class="row">
       <div class="col-xs-4">
-        <div class="row">Detta är ett bidrag i Smart Cities Green Hackathon 2015. Utmaningen presenterades av Sweco och handlar om att konceptualisera smart stadsanvändning av sensorer.
+        <div class="row"><p>Detta är ett bidrag i Smart Cities Green Hackathon 2015. Utmaningen presenterades av Sweco och handlar om att konceptualisera smart stadsanvändning av sensorer.</p>
       </div>
       </div>
       <div class="col-xs-4">
         <div class="row">
-          Data om luftkvalite kommer från Naturvårdsverket och <a href="http://www.ivl.se/sidor/omraden/miljodata/aktuella-halter-i-luft.html">Svenska miljöinstitutet</a>.
+          <p>Data om luftkvalite kommer från Naturvårdsverket och <a href="http://www.ivl.se/sidor/omraden/miljodata/aktuella-halter-i-luft.html">Svenska miljöinstitutet</a>.</p>
         </div>
       </div>
       <div class="col-xs-4">
         <div class="row">
-          Vi som har skapat den här tjänsten är studenter på Linköpings universitet och kommer från Medieteknik, Kognitionsvetenskap och Grafisk design och kommunikation.
+          <p>Vi som har skapat den här tjänsten är studenter på Linköpings universitet och kommer från Medieteknik, Kognitionsvetenskap och Grafisk design och kommunikation.
           <a href="https://se.linkedin.com/in/olivia-kassander-61714797">Olivia Kassander</a>,
           <a href="https://se.linkedin.com/in/holmise/sv">Johan Holmlund</a>,
           <a href="https://se.linkedin.com/in/emmamelander">Emma Melander</a>,
           <a href="https://se.linkedin.com/in/linneanabo">Linnea Nåbo</a>,
           <a href="https://se.linkedin.com/in/eriksandren">Erik Sandrén</a>
+        </p>
         </div>
       </div>
       </div>
