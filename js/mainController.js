@@ -1,6 +1,5 @@
 // Controller
 angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', function($scope, luftdata) {
-  $scope.greeting = 'Hola';
 
 		/*
 		Färger: 
