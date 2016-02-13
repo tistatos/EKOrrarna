@@ -231,8 +231,6 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				}
 				i++;
 			}
-			console.log($scope.amount)
-			//console.log($scope.amountColors)
 
       $scope.$emit('newData');
     }
