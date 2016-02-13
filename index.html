@@ -3,79 +3,78 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title></title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="custom.css">
-	</head>
-	<body ng-app='ekorrarna'>
-	<div ng-controller='mainController'>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="custom.css">
+</head>
+<body ng-app='ekorrarna'>
+  <div class="container"> 
+   <div ng-controller='mainController'>
 
     <div class="row">
-      
-      <div class="col-xs-6">
+      <div class="col-xs-6 justeringar">
         <lungdirective>
         	<!--<img src="img/spit.png" height="100" width="100">-->
         </lungdirective>
       </div>
 
       <div class="col-xs-6">
-          <h1>Dina lungor i Stockholm</h1>
-          <p>PLACEHOLDER - Detta är ett bidrag i Smart Cities Green Hackathon 2015. Utmaningen presenterades av Sweco och handlar om att konceptualisera smart stadsanvändning av sensorer.</p>
-          
-          <div class="row">
-            <div class="col-xs-6 bla matvarden">
-              <h4>Luftpartiklar (PM10)</h4>
-              <databar measure="PM10"></databar>
-            </div>
-            <div class="col-xs-6 orange matvarden">
-              <h4>Kvävedioxid (NO<sub>2</sub>)</h4>
-              <databar measure="NO2"></databar>
-            </div>
-          </div>
+        <h1>Dina lungor i Stockholm</h1>
+        <p style="margin-bottom: 3%;">PLACEHOLDER - Detta är ett bidrag i Smart Cities Green Hackathon 2015. Utmaningen presenterades av Sweco och handlar om att konceptualisera smart stadsanvändning av sensorer.</p>
 
-          <div class="row">
-            <div class="col-xs-6 gron matvarden">
-             <h4> Svaveldioxid (SO<sub>2</sub>)</h4>
-              <databar measure="" disabled="true"></databar>
-            </div>
-            <div class="col-xs-6 gul matvarden">
-             <h4>Ozon (O<sub>3</sub>)</h4>
-              <databar measure="O3"></databar>
-            </div>
+        <div class="row">
+          <div class="col-xs-6 bla matvarden">
+            <h4>Luftpartiklar (PM10)</h4>
+            <databar measure="PM10"></databar>
           </div>
+          <div class="col-xs-6 orange matvarden">
+            <h4>Kvävedioxid (NO<sub>2</sub>)</h4>
+            <databar measure="NO2"></databar>
+          </div>
+        </div>
 
-          <div class="row">
-            <div class="col-xs-6 rosa matvarden">
-              <h4>Kolmonoxid (CO)</h4>
-              <databar measure="CO"></databar>
-            </div>
-            <div class="col-xs-6 lila matvarden">
-              <h4>Lättflyktiga kolväten (VOC)</h4>
-              <databar measure="Bensen"></databar>
-            </div>
+        <div class="row">
+          <div class="col-xs-6 gron matvarden">
+           <h4> Svaveldioxid (SO<sub>2</sub>)</h4>
+           <databar measure="" disabled="true"></databar>
+         </div>
+         <div class="col-xs-6 gul matvarden">
+           <h4>Ozon (O<sub>3</sub>)</h4>
+           <databar measure="O3"></databar>
+         </div>
+       </div>
+
+       <div class="row">
+        <div class="col-xs-6 rosa matvarden">
+          <h4>Kolmonoxid (CO)</h4>
+          <databar measure="CO"></databar>
+        </div>
+        <div class="col-xs-6 lila matvarden">
+          <h4>Lättflyktiga kolväten (VOC)</h4>
+          <databar measure="Bensen"></databar>
         </div>
       </div>
     </div>
-
-    <div class="container">
-    <div class="row">
-      <div class="col-xs-12 h1">Detta kan du göra för att minska din klimatpåverkan</div>
-    </div>
+  </div>
 
 
-<div class="row">
+  <div class="row" style="margin-bottom: 3%;">
+    <div class="col-xs-12"><h2>Detta kan du göra för att minska din klimatpåverkan</h2></div>
+  </div>
+
+
+  <div class="row">
     <div class="col-xs-4">
       <div class="row">
-
         <div class="col-xs-2"><img src="img/ikoner/{{firstAction.image}}" alt="" class="ikonstorlek">
         </div>
         <div class="col-xs-10">
-          <div class="row"><h3>{{firstAction.title}}</h3></div>
+          <div class="row"><h4>{{firstAction.title}}</h4></div>
           <div class="row"><p>{{firstAction.text}}</p></div>
         </div>
       </div>
@@ -86,7 +85,7 @@
         <div class="col-xs-2"><img src="img/ikoner/{{secondAction.image}}" alt="" class="ikonstorlek">
         </div>
         <div class="col-xs-10">
-          <div class="row"><h3>{{secondAction.title}}</h3></div>
+          <div class="row"><h4>{{secondAction.title}}</h4></div>
           <div class="row"><p>{{secondAction.text}}</p></div>
         </div>
       </div>
@@ -98,64 +97,80 @@
         <div class="col-xs-2"><img src="img/ikoner/{{thirdAction.image}}" alt="" class="ikonstorlek">
         </div>
         <div class="col-xs-10">
-          <div class="row"><h3>{{thirdAction.title}}</h3></div>
+          <div class="row"><h4>{{thirdAction.title}}</h4></div>
           <div class="row"><p>{{thirdAction.text}}</p></div>
 
         </div>
       </div>
     </div>
+  </div>
 </div>
 
-    <footer class="row">
-      <div class="col-xs-4">
-        <div class="row"><h3>Green Hackathon</h3></div>
-      </div>
-      <div class="col-xs-4">
-        <div class="row"><h3>Datakällor</h3></div>
-      </div>
-      <div class="col-xs-4">
-        <div class="row"><img src="img/lugnalungan_small.png" alt="logo" class="logostorlek"></div>
-      </div>
-      <div class="row">
-      <div class="col-xs-4">
-        <div class="row"><p>Detta är ett bidrag i Smart Cities Green Hackathon 2015. Utmaningen presenterades av Sweco och handlar om att konceptualisera smart stadsanvändning av sensorer.</p>
-      </div>
-      </div>
-      <div class="col-xs-4">
-        <div class="row">
-          <p>Data om luftkvalite kommer från Naturvårdsverket och <a href="http://www.ivl.se/sidor/omraden/miljodata/aktuella-halter-i-luft.html">Svenska miljöinstitutet</a>.</p>
-        </div>
-      </div>
-      <div class="col-xs-4">
-        <div class="row">
-          <p>Vi som har skapat den här tjänsten är studenter på Linköpings universitet och kommer från Medieteknik, Kognitionsvetenskap och Grafisk design och kommunikation.
-          <a href="https://se.linkedin.com/in/olivia-kassander-61714797">Olivia Kassander</a>,
-          <a href="https://se.linkedin.com/in/holmise/sv">Johan Holmlund</a>,
-          <a href="https://se.linkedin.com/in/emmamelander">Emma Melander</a>,
-          <a href="https://se.linkedin.com/in/linneanabo">Linnea Nåbo</a>,
-          <a href="https://se.linkedin.com/in/eriksandren">Erik Sandrén</a>
-        </p>
-        </div>
-      </div>
-      </div>
+<footer>
+ <div class="row">
+  <div class="col-xs-4">
+  </div>
+  <div class="col-xs-4">
+  </div>
+  <div class="col-xs-4" style="display: block; margin-left: auto; margin-right: auto;" >
+    <img src="img/lugnalungan_small.png" alt="logo" class="logostorlek">
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
+    <h3>Green Hackathon</h3>
+  </div>
+  <div class="col-xs-4">
+    <h3>Datakällor</h3>
+  </div>
+  <div class="col-xs-4">
+    <h3>EKOrrarna</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
+   <p>Detta är ett bidrag i Smart Cities Green Hackathon 2015. Utmaningen presenterades av Sweco och handlar om att konceptualisera smart stadsanvändning av sensorer.</p>
+   
+ </div>
+ <div class="col-xs-4">
+  
+  <p>Data om luftkvalite kommer från Naturvårdsverket och <a href="http://www.ivl.se/sidor/omraden/miljodata/aktuella-halter-i-luft.html">Svenska miljöinstitutet</a>.</p>
+  
+</div>
+<div class="col-xs-4">
+  <p>Vi som har skapat den här tjänsten är studenter på Linköpings universitet och kommer från Medieteknik, Kognitionsvetenskap och Grafisk design och kommunikation.
+    <a href="https://se.linkedin.com/in/olivia-kassander-61714797">Olivia Kassander</a>,
+    <a href="https://se.linkedin.com/in/holmise/sv">Johan Holmlund</a>,
+    <a href="https://se.linkedin.com/in/emmamelander">Emma Melander</a>,
+    <a href="https://se.linkedin.com/in/linneanabo">Linnea Nåbo</a> och
+    <a href="https://se.linkedin.com/in/eriksandren">Erik Sandrén</a>
+  </p>
+  
 </div>
 </div>
 
-    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-    <!--<script type="text/javascript" src="js/main.js"></script>-->
-    <script src="js/d3Service.js"></script>
-    <script src="js/luftService.js"></script>
-    <script src="js/mainController.js"></script>
-    <script src="js/lungdirective.js"></script>
-    <script src="js/luftService.js"></script>
-    <script src="js/databars.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</footer>
 
-    <script type="text/javascript">
-    </script>
+</div>
 
-  </body>
-  </html>
+<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<!--<script type="text/javascript" src="js/main.js"></script>-->
+<script src="js/d3Service.js"></script>
+<script src="js/luftService.js"></script>
+<script src="js/mainController.js"></script>
+<script src="js/lungdirective.js"></script>
+<script src="js/luftService.js"></script>
+<script src="js/databars.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+</script>
+
+</body>
+</html>
 
