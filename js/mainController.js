@@ -176,7 +176,6 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				i++;
 			}
 
-      console.log("emitted")
       $scope.$emit('newData');
     }
 
