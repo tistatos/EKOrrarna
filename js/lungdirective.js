@@ -40,7 +40,7 @@ angular.module('ekorrarna')
         	scope.updateHalo();
       	});
 
-        scope.$parent.$on('allertData', function() {
+        scope.$parent.$on('newHalo', function() {
         	scope.updateHalo();
       	});
 
@@ -59,12 +59,16 @@ angular.module('ekorrarna')
 				  	.duration(2000)
 					  .style("fill",scope.amountColors[rand])
 						.ease("linear");
-    			}) 
+    			})
 				}
 	    });
 
 	    scope.updateHalo = function() {
-				scope.halo.attr("xlink:href", "img/lunga_bla.png");
+				scope.halo
+					.transition()
+			  	.duration(2000)
+			  	.attr("xlink:href", scope.haloUrl)
+					.ease("linear");
 	    }
 
       scope.render = function(data) {

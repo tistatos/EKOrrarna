@@ -39,7 +39,6 @@ return {
       }
 
       scope.render = function() {
-        console.log(attrs);
         if(!attrs.disabled) {
           var avgPos = (scope.measurement.avg/scope.measurement.max)*barWidth
           var dataWidth = (scope.measurement.data/scope.measurement.max)*barWidth
@@ -67,7 +66,6 @@ return {
             .style("fill", "black");
         }
         else {
-          console.log("disabled");
       		var mySquare=svg.append("rect")
 						.attr("x",0)
 						.attr("y",0)
