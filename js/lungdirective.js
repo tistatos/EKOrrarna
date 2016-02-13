@@ -9,8 +9,8 @@ angular.module('ekorrarna')
           request.send(null)
   var pos = JSON.parse(request.responseText);
 
-  var numberOfDots = 20;
-  var radius = 7;
+  var numberOfDots = 30;
+  var radius = 5;
   var circleDistance = radius*2 + 2;
   var lungHeight = (radius*2 + 2)*(numberOfDots+2);
 
@@ -38,6 +38,14 @@ angular.module('ekorrarna')
 	      });
 
 	      scope.updateLung = function() {
+
+	      	svg.append("image")
+	      		.attr("height", "100px")
+	      		.attr("xlink:href", "img/lunga_vit.png")
+					  .attr("width", lungHeight)
+					  .attr("height", lungHeight)
+					  .attr("x", radius)
+  					.attr("y",0);
 
 			  	pos.forEach(item => {
 
