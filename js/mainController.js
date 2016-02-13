@@ -286,7 +286,7 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				finalArray.push(b);
 			}
       if(total < 10) {
-        finalArray[finalArray.length-1]++;
+        finalArray[0]++;
       }
 
 			return finalArray;
