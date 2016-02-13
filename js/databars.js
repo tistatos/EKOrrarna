@@ -90,6 +90,9 @@ return {
 
 
           var pts = '245, 0, 250, 10, 247,10, 247, 20 242,20 242,10 240,10 245,0';
+          if(scope.arrow) {
+          }
+          else {
           scope.arrow = svg.append('polyline')
 						.attr("x",0)
             .attr('points', pts)
@@ -97,7 +100,7 @@ return {
 						.attr("y",-100)
             .attr("transform", "rotate(45, 245, 10)")
             .style('fill', 'white');
-
+          }
         }
         else {
       		var mySquare=svg.append("rect")
