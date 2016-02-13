@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="custom.css">
 	</head>
 	<body ng-app='ekorrarna'>
-		<div ng-controller='mainController'>
+	<div ng-controller='mainController'>
+
     <div class="row">
       <div class="col-xs-6">
         <lungdirective>
@@ -55,54 +56,88 @@
     </div>
 
     <div class="row">
-
       <div class="col-xs-12 h1">Detta kan du göra för att minska din klimatpåverkan</div>
-
     </div>
-    <div class="row">
-      <div class="col-xs-4">
-        <div class="row ikonstorlek"><img class="img-responsive" src="img/ikoner/kollektivt.png" alt=""></div>
-        <div class="row h3">Åk kollektivt</div>
-        <div class="row p">
-          Visste du att forskning visar att den som åker kollektivt rör
-          sig i genomsnitt fyra gånger mer per dag än den som åker bil?
+
+
+
+    <div class="col-xs-4">
+      <div class="row">
+
+        <div class="col-xs-2"><img src="img/ikoner/{{firstAction.image}}" alt="" class="ikonstorlek">
         </div>
-      </div>
-      <div class="col-xs-4">
-        <div class="row ikonstorlek"><img src="img/ikoner/gacykla.png" alt=""></div>
-        <div class="row h3">Gå eller cykla när det är möjligt</div>
-        <div class="row p">
-          För varje mil du cyklar eller går istället för att åka bil minskar du
-          nybildningen av koldioxid från förbränning av bensin med 2.4 kilo
-        </div>
-      </div>
-      <div class="col-xs-4">
-        <div class="row ikonstorlek"><img src="img/ikoner/fyrverkerier.png" alt=""></div>
-        <div class="row h3">Avstå från att skjuta fyrverkerier</div>
-        <div class="row p">
-          Många fyrverkerier innehåller ämen som inte är bra för
-          dig eller naturen. Välj därför att avstå från att skjuta upp
-          egna fyrverkerier
+        <div class="col-xs-10">
+          <div class="row"><h3>{{firstAction.title}}</h3></div>
+          <div class="row"><p>{{firstAction.text}}</p></div>
         </div>
       </div>
     </div>
-  </div>
 
-		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-		<!--<script type="text/javascript" src="js/main.js"></script>-->
-		<script src="js/d3Service.js"></script>
-		<script src="js/luftService.js"></script>
-		<script src="js/mainController.js"></script>
-		<script src="js/lungdirective.js"></script>
-		<script src="js/luftService.js"></script>
-		<script src="js/databars.js"></script>
+    <div class="col-xs-4">
+      <div class="row">
+        <div class="col-xs-2"><img src="img/ikoner/{{secondAction.image}}" alt="" class="ikonstorlek">
+        </div>
+        <div class="col-xs-10">
+          <div class="row"><h3>{{secondAction.title}}</h3></div>
+          <div class="row"><p>{{secondAction.text}}</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-4">
+      <div class="row">
+
+        <div class="col-xs-2"><img src="img/ikoner/{{thirdAction.image}}" alt="" class="ikonstorlek">
+        </div>
+        <div class="col-xs-10">
+          <div class="row"><h3>{{thirdAction.title}}</h3></div>
+          <div class="row"><p>{{thirdAction.text}}</p></div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="row">
+      <div class="col-xs-4">
+        <div class="row">Green Hackathon</div>
+        <div class="row">Detta är ett bidrag i Smart Cities Green Hackathon 2015. Utmaningen presenterades av Sweco och handlar om att konceptualisera smart stadsanvändning av sensorer.
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="row">Datakällor</div>
+        <div class="row">
+          Data om luftkvalite kommer från Naturvårdsverket och <a href="http://www.ivl.se/sidor/omraden/miljodata/aktuella-halter-i-luft.html">Svenska miljöinstitutet</a>.
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="row"><img src="img/lugnalungan_small.png" alt="logo" class="logostorlek"></div>
+        <div class="row">
+          Vi som har skapat den här tjänsten är studenter på Linköpings universitet och kommer från Medieteknik, Kognitionsvetenskap och Grafisk design och kommunikation.
+          <a href="https://se.linkedin.com/in/olivia-kassander-61714797">Olivia Kassander</a>,
+          <a href="https://se.linkedin.com/in/holmise/sv">Johan Holmlund</a>,
+          <a href="https://se.linkedin.com/in/emmamelander">Emma Melander</a>,
+          <a href="https://se.linkedin.com/in/linneanabo">Linnea Nåbo</a>,
+          <a href="https://se.linkedin.com/in/eriksandren">Erik Sandrén</a>
+        </div>
+      </div>
+    </footer>
+</div>
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <!--<script type="text/javascript" src="js/main.js"></script>-->
+    <script src="js/d3Service.js"></script>
+    <script src="js/luftService.js"></script>
+    <script src="js/mainController.js"></script>
+    <script src="js/lungdirective.js"></script>
+    <script src="js/luftService.js"></script>
+    <script src="js/databars.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-		<script type="text/javascript">
-		</script>
+    <script type="text/javascript">
+    </script>
 
-	</body>
-</html>
+  </body>
+  </html>
 
