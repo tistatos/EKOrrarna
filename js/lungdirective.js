@@ -19,7 +19,7 @@ angular.module('ekorrarna')
 	  link: function(scope, element, attrs) {
 
 	    d3Service.d3().then(function(d3) {
-	    	
+
 	      svg = d3.select(element[0])
 	        .append('svg')
 	        .style('width', '100%')
@@ -29,6 +29,10 @@ angular.module('ekorrarna')
 	      window.onresize = function() {
 	        scope.$apply();
 	      };
+
+        scope.$parent.$on('newData', function() {
+        	scope.render();
+      	});
 
 	      // Watch for resize event
 	      scope.$watch(function() {
@@ -45,17 +49,21 @@ angular.module('ekorrarna')
 					  .attr("width", lungHeight)
 					  .attr("height", lungHeight)
 					  .attr("x", radius)
-  					.attr("y",0);
+  					.attr("y", -10);
 
 			  	pos.forEach(item => {
 
 			  		// Number 0-9 (random bland aktuella färger)
 						var rand = Math.floor((Math.random() * 10));
-			  		var mySquare=svg.append("circle")
+			  		var dot=svg.append("circle")
 						  .attr("cx",(1+item.x)*circleDistance)
 						  .attr("cy",(1+item.y)*circleDistance)
 						  .attr("r",radius)
 						  .style("fill",scope.amountColors[rand]);
+
+					  dot.transition()
+  						.attr("x",320)
+  						.ease("elastic");
 
 			  	})
 				}
@@ -66,3 +74,4 @@ angular.module('ekorrarna')
       }
   }};
 }]);
+

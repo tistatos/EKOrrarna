@@ -1,5 +1,5 @@
 // Controller
-angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', function($scope, luftdata) {
+angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', '$interval', function($scope, luftdata, $interval) {
 
     $scope.day = 1;
     $scope.month = 1;
@@ -8,11 +8,88 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
     $scope.avgData = luftdata.getAvgData();
 
     $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour);
-    $scope.PM10 = {data: $scope.allData.PM10, max: $scope.maxData.PM10, avg: $scope.avgData.PM10 };
-    $scope.NO2 = {data: $scope.allData.NO2, max: $scope.maxData.NO2,  avg: $scope.avgData.NO2};
-    $scope.O3 = {data: $scope.allData.Ozon, max: $scope.maxData.O3,  avg: $scope.avgData.O3};
-    $scope.Bensen = {data: $scope.allData.Bensen, max: $scope.maxData.Bensen,  avg: $scope.avgData.Bensen};
-    $scope.CO = {data: $scope.allData.CO, max: $scope.maxData.CO,  avg: $scope.avgData.CO};
+    $scope.PM10 = {
+      data: $scope.allData.PM10,
+      max: $scope.maxData.PM10,
+      avg: $scope.avgData.PM10,
+      color: '#009cd8'
+    };
+    $scope.NO2 = {
+      data: $scope.allData.NO2,
+      max: $scope.maxData.NO2,
+      avg: $scope.avgData.NO2,
+      color:'#ce5e1c'
+    };
+    $scope.O3 = {
+      data: $scope.allData.Ozon,
+      max: $scope.maxData.O3,
+      avg: $scope.avgData.O3,
+      color:'#f4df10'
+    };
+    $scope.Bensen = {
+      data: $scope.allData.Bensen,
+      max: $scope.maxData.Bensen,
+      avg: $scope.avgData.Bensen,
+      color:'#592473'
+    };
+    $scope.CO = {
+      data: $scope.allData.CO,
+      max: $scope.maxData.CO,
+      avg: $scope.avgData.CO,
+      color:'#b10d61'
+    };
+
+
+    $scope.actions= [
+    {
+      "title": "Åk kollektivt",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+      ]
+
+
+
 		/*
 		Färger:
 		Lila - #592473	bensen
@@ -26,10 +103,9 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 		var no2Max = 60;
 		var ozonMax = 120;
 		var pm10Max = 35;
-		var arrayMax = [bensenMax, coMax, no2Max, ozonMax, pm10Max];
+		//var arrayMax = [bensenMax, coMax, no2Max, ozonMax, pm10Max];
 		var totalBad = bensenMax+coMax+no2Max+ozonMax+pm10Max;
 
-		getRealtimeData(1, 1, 1);
 	/*
 		Object {Starttid: "2014-01-01 00:00", Stopptid: "2014-01-01 01:00", CO: 0.2, NO2: 17.4, Ozon: 33.1…}
 		Bensen: 1.7 		(34%)
@@ -42,19 +118,21 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 		*/
 
 		$scope.colors = ['#592473', '#b10d61', '#ce5e1c', '#f4df10', '#009cd8', '#ffffff'];
-		$scope.amount = getRealtimeData();
+		$scope.amount = [];
 
+		$scope.badThings = [];
+		$scope.badThings.push($scope.allData.Bensen);
+		$scope.badThings.push($scope.allData.CO);
+		$scope.badThings.push($scope.allData.NO2);
+		$scope.badThings.push($scope.allData.Ozon);
+		$scope.badThings.push($scope.allData.PM10);
+
+		$scope.amount = getRealtimeData();
 		$scope.amountColors = [];
-    $scope.increase = function() {
-      $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour++);
-      $scope.PM10 = {data: $scope.allData.PM10, max: $scope.maxData.PM10, avg: $scope.avgData.PM10 };
-      $scope.NO2 = {data: $scope.allData.NO2, max: $scope.maxData.NO2,  avg: $scope.avgData.NO2};
-      $scope.O3 = {data: $scope.allData.Ozon, max: $scope.maxData.O3,  avg: $scope.avgData.O3};
-      $scope.Bensen = {data: $scope.allData.Bensen, max: $scope.maxData.Bensen,  avg: $scope.avgData.Bensen};
-      $scope.CO = {data: $scope.allData.CO, max: $scope.maxData.CO,  avg: $scope.avgData.CO};
-      console.log("emitted")
-      $scope.$emit('newData');
-    }
+    $interval(function() {
+      $scope.increase();
+    },700);
+
 		var u = 0;
 		var i = 0;
 		while(u < 10) {
@@ -66,14 +144,43 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 			i++;
 		}
 
-		function getRealtimeData(m, d, h) {
-			var data = luftdata.getData(1,1,1);
-			var badThings = [];
-			badThings.push(data.Bensen);
-			badThings.push(data.CO);
-			badThings.push(data.NO2);
-			badThings.push(data.Ozon);
-			badThings.push(data.PM10);
+    $scope.increase = function() {
+
+      $scope.hour++;
+      $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour);
+      $scope.PM10.data =  $scope.allData.PM10;
+      $scope.NO2.data = $scope.allData.NO2;
+      $scope.O3.data = $scope.allData.Ozon;
+      $scope.Bensen.data =  $scope.allData.Bensen;
+      $scope.CO.data = $scope.allData.CO;
+
+			$scope.badThings = [];
+			$scope.badThings.push(($scope.allData.Bensen < 0) ? 0 : $scope.allData.Bensen);
+			$scope.badThings.push(($scope.allData.CO < 0) ? 0 : $scope.allData.CO);
+			$scope.badThings.push(($scope.allData.NO2 < 0) ? 0 : $scope.allData.NO2);
+			$scope.badThings.push(($scope.allData.Ozon < 0) ? 0 : $scope.allData.Ozon);
+			$scope.badThings.push(($scope.allData.PM10 < 0) ? 0 : $scope.allData.PM10);
+
+			$scope.amount = getRealtimeData();
+			$scope.amountColors = [];
+
+			var u = 0;
+			var i = 0;
+			while(u < 10) {
+				var no = $scope.amount[i];
+				for(var j=0; j < no; j++) {
+					$scope.amountColors.push($scope.colors[i]);
+					u++;
+				}
+				i++;
+			}
+			$scope.$emit('newData');
+    }
+
+
+		function getRealtimeData() {
+			var badThings = $scope.badThings;
+			var arrayMax = [5, 60, 60, 120, 35];
 
 			var array = [];
 			var totalBadRealtime = 0;
@@ -83,7 +190,7 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				totalBadRealtime += badThings[i];
 			}
 			var cleanAir = totalBad - totalBadRealtime;
-			badThings.push(badThings);
+			badThings.push(cleanAir);
 
 			var totalAirPercentage = 0;
 			for(var i=0; i<5; i++) {
@@ -104,10 +211,15 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 			}
 
 			var finalArray = [];
+			var total = 0;
 			for(var i=0; i<array.length; i++) {
 				var b = Math.round(getPercentage(newArray[i], totalPercentage));
-				totalPercentage += b;
+				total += b;
 				finalArray.push(b);
+			}
+			if(total < 10) {
+				console.log('oh no total is  ' + total);
+				finalArray[finalArray.length-1]++;
 			}
 			return finalArray;
 
