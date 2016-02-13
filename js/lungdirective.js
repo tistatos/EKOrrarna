@@ -49,7 +49,6 @@ angular.module('ekorrarna')
 
 			  	})
 				}
-
 	    });
 
       scope.render = function(data) {

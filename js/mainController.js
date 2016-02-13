@@ -82,7 +82,7 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				totalPercentage += b;
 				newArray.push(b);
 			}
-			
+
 			var finalArray = [];
 			for(var i=0; i<array.length; i++) {
 				var b = Math.round(getPercentage(newArray[i], totalPercentage));
