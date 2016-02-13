@@ -78781,7 +78781,6 @@ var luftdata = [
     var days = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     var index =((month-1)*days[month]*24)+((day-1)*24)+hour-1;
-    console.log(index)
     return luftdata[index];
   },
 

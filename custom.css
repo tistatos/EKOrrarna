@@ -1,6 +1,59 @@
-
-
 body {
-  background-color: green
+  background-color: #111;
+  color: #fff;
+  font-weight: 800;
 }
 
+h1{
+
+}
+
+h2{
+	
+}
+
+h3{
+	
+}
+
+p{
+font-weight: 200;	
+}
+
+.col{
+	border: 1px #fff;
+}
+
+.ikonstorlek img{
+	width: 15%;
+	height: 15%;
+}
+
+.matvarden{
+	text-transform: uppercase;
+	font-size: 2em;
+}
+
+.lila{
+	color: #592473;
+}
+
+.gron{
+	color:#366841;
+}
+
+.rosa{
+	color:#b10d61;
+}
+
+.orange{
+	color: #ce5e1c;
+}
+
+.gul{
+	color: #f4df10;
+}
+
+.bla{
+	color:#009cd8;
+}
