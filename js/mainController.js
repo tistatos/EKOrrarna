@@ -38,6 +38,58 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
       avg: $scope.avgData.CO,
       color:'#b10d61'
     };
+
+
+    $scope.actions= [
+    {
+      "title": "Åk kollektivt",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+    {
+      "title": "",
+      "text": "",
+      "image": ""
+    },
+      ]
+
+
+
 		/*
 		Färger:
 		Lila - #592473	bensen
