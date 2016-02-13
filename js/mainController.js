@@ -1,5 +1,5 @@
 // Controller
-angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', function($scope, luftdata) {
+angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', '$interval', function($scope, luftdata, $interval) {
 
     $scope.day = 1;
     $scope.month = 1;
@@ -8,11 +8,36 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
     $scope.avgData = luftdata.getAvgData();
 
     $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour);
-    $scope.PM10 = {data: $scope.allData.PM10, max: $scope.maxData.PM10, avg: $scope.avgData.PM10 };
-    $scope.NO2 = {data: $scope.allData.NO2, max: $scope.maxData.NO2,  avg: $scope.avgData.NO2};
-    $scope.O3 = {data: $scope.allData.Ozon, max: $scope.maxData.O3,  avg: $scope.avgData.O3};
-    $scope.Bensen = {data: $scope.allData.Bensen, max: $scope.maxData.Bensen,  avg: $scope.avgData.Bensen};
-    $scope.CO = {data: $scope.allData.CO, max: $scope.maxData.CO,  avg: $scope.avgData.CO};
+    $scope.PM10 = {
+      data: $scope.allData.PM10,
+      max: $scope.maxData.PM10,
+      avg: $scope.avgData.PM10,
+      color: '#009cd8'
+    };
+    $scope.NO2 = {
+      data: $scope.allData.NO2,
+      max: $scope.maxData.NO2,
+      avg: $scope.avgData.NO2,
+      color:'#ce5e1c'
+    };
+    $scope.O3 = {
+      data: $scope.allData.Ozon,
+      max: $scope.maxData.O3,
+      avg: $scope.avgData.O3,
+      color:'#f4df10'
+    };
+    $scope.Bensen = {
+      data: $scope.allData.Bensen,
+      max: $scope.maxData.Bensen,
+      avg: $scope.avgData.Bensen,
+      color:'#592473'
+    };
+    $scope.CO = {
+      data: $scope.allData.CO,
+      max: $scope.maxData.CO,
+      avg: $scope.avgData.CO,
+      color:'#b10d61'
+    };
 		/*
 		Färger:
 		Lila - #592473	bensen
@@ -44,15 +69,19 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 		$scope.colors = ['#592473', '#b10d61', '#ce5e1c', '#f4df10', '#009cd8', '#ffffff'];
 		$scope.amount = getRealtimeData();
 
+    $interval(function() {
+      $scope.increase();
+    },700);
+
 		$scope.amountColors = [];
     $scope.increase = function() {
-      $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour++);
+      $scope.hour++;
+      $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour);
       $scope.PM10 = {data: $scope.allData.PM10, max: $scope.maxData.PM10, avg: $scope.avgData.PM10 };
       $scope.NO2 = {data: $scope.allData.NO2, max: $scope.maxData.NO2,  avg: $scope.avgData.NO2};
       $scope.O3 = {data: $scope.allData.Ozon, max: $scope.maxData.O3,  avg: $scope.avgData.O3};
       $scope.Bensen = {data: $scope.allData.Bensen, max: $scope.maxData.Bensen,  avg: $scope.avgData.Bensen};
       $scope.CO = {data: $scope.allData.CO, max: $scope.maxData.CO,  avg: $scope.avgData.CO};
-      console.log("emitted")
       $scope.$emit('newData');
     }
 		var u = 0;

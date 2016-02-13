@@ -26,14 +26,21 @@ return {
       });
 
       scope.$parent.$on('newData', function() {
-        scope.render();
-        console.log("recieved");
+        scope.update();
       });
+
+      scope.update = function() {
+        var dataWidth = (scope.measurement.data/scope.measurement.max)*300
+        dataWidth = Math.min(dataWidth,300);
+
+        scope.databar.transition().attr("width",dataWidth).duration(2000).ease("linear");
+      }
 
       scope.render = function() {
         var avgPos = (scope.measurement.avg/scope.measurement.max)*300
         var dataWidth = (scope.measurement.data/scope.measurement.max)*300
-        var dataWidth = Math.min(dataWidth,300);
+        dataWidth = Math.max(0,Math.min(dataWidth,300));
+
         //pos.forEach(item => {
       		var mySquare=svg.append("rect")
 						.attr("x",0)
@@ -44,18 +51,19 @@ return {
 					  .style("stroke",'#009cd8')
 					  .style("fill",'#dddddd');
 
-          svg.append("rect")
+          scope.databar = svg.append("rect")
             .attr("x", 2)
             .attr("y", 2)
             .attr("width", dataWidth)
             .attr("height", 19)
-            .style("fill", "green");
+            .style("fill", scope.measurement.color);
           svg.append("rect")
             .attr("x", avgPos)
             .attr("y", 0)
             .attr("width", 3)
             .attr("height", 22)
-            .style("fill", "blue");
+            .style("fill", "black");
+
         //})
         // our custom d3 code
       }
