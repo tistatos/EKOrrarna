@@ -89,9 +89,11 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
     ]
 
 
-    $scope.firstAction = scope.action[0];
-    $scope.secondAction = scope.action[0];
-    $scope.thirdAction = scope.action[0];
+    var rand =Math.round( Math.random()*9);
+    console.log(rand);
+    $scope.firstAction = $scope.actions[rand];
+    $scope.secondAction = $scope.actions[(rand+1)%9];
+    $scope.thirdAction = $scope.actions[(rand+2)%9];
 
 
 
@@ -159,6 +161,7 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
       $scope.Bensen.data =  $scope.allData.Bensen;
       $scope.CO.data = $scope.allData.CO;
 
+
 			$scope.badThings = [];
 			$scope.badThings.push(($scope.allData.Bensen < 0) ? 0 : $scope.allData.Bensen);
 			$scope.badThings.push(($scope.allData.CO < 0) ? 0 : $scope.allData.CO);
@@ -179,7 +182,8 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				}
 				i++;
 			}
-			$scope.$emit('newData');
+
+      $scope.$emit('newData');
     }
 
 
@@ -222,10 +226,11 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				total += b;
 				finalArray.push(b);
 			}
-			if(total < 10) {
-				console.log('oh no total is  ' + total);
-				finalArray[finalArray.length-1]++;
-			}
+      if(total < 10) {
+        console.log('oh no total is  ' + total);
+        finalArray[finalArray.length-1]++;
+      }
+
 			return finalArray;
 
 		}
