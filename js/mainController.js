@@ -72,7 +72,7 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
       "image": "motorbromsa.png"
     },
     {
-      "title": "Samåk exempelvis genom att använd skjutsgruppen.se",
+      "title": "Samåk exempelvis genom att använda skjutsgruppen.se",
       "text": "Ett utmärkt sätt att ersätta det egna bilåkandet är att åka med andra",
       "image": "skjutsgrupp.png"
     },
@@ -151,7 +151,12 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 			i++;
 		}
 
+
+
+
+    $scope.updateAction= 0;
     $scope.increase = function() {
+
 
       $scope.hour++;
       $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour);
@@ -171,6 +176,18 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 
 			$scope.amount = getRealtimeData();
 			$scope.amountColors = [];
+      var rand =Math.round( Math.random()*9);
+
+      $scope.updateAction++
+
+      if($scope.updateAction == 6) {
+        $scope.firstAction = $scope.actions[rand];
+        $scope.secondAction = $scope.actions[(rand+1)%9];
+        $scope.thirdAction = $scope.actions[(rand+2)%9];
+
+        $scope.updateAction=0
+      }
+
 
 			var u = 0;
 			var i = 0;
