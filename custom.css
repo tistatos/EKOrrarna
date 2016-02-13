@@ -37,8 +37,9 @@ font-weight: 200;
 }
 
 .logostorlek img{
-	width: 20%;
-	height: 20%;
+	width: 15%;
+	height: 15%;
+
 }
 
 .matvarden{
@@ -78,6 +79,7 @@ a:hover {
 
 }
 
-.row{
-	height: 10%;
+footer {
+	padding-top: 5%;
+	background-color: #333;
 }
