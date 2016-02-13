@@ -10,7 +10,7 @@ angular.module('ekorrarna')
   var pos = JSON.parse(request.responseText);
 
   var numberOfDots = 30;
-  var radius = 5;
+  var radius = 7.5;
   var circleDistance = radius*2 + 2;
   var lungHeight = (radius*2 + 2)*(numberOfDots+2);
 
@@ -49,7 +49,7 @@ angular.module('ekorrarna')
 					  .attr("width", lungHeight)
 					  .attr("height", lungHeight)
 					  .attr("x", radius)
-  					.attr("y", -10);
+  					.attr("y", -15);
 
 			  	pos.forEach(item => {
 
