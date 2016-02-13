@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="custom.css">
 	</head>
 	<body ng-app='ekorrarna'>
-		<div ng-controller='mainController'>
+	<div ng-controller='mainController'>
+
     <div class="row">
       <div class="col-xs-6">
         <lungdirective>
@@ -55,9 +56,7 @@
     </div>
 
     <div class="row">
-
       <div class="col-xs-12 h1">Detta kan du göra för att minska din klimatpåverkan</div>
-
     </div>
 
 
@@ -65,54 +64,58 @@
 <div class="row">
     <div class="col-xs-4">
       <div class="row">
-        <div class="col-xs-2 ikonstorlek"><img src="img/ikoner/{{firstAction.image}}" alt="">
+
+        <div class="col-xs-2"><img src="img/ikoner/{{firstAction.image}}" alt="" class="ikonstorlek">
         </div>
         <div class="col-xs-10">
-          <div class="row h3">{{firstAction.title}}
+          <div class="row">{{firstAction.title}}
+
           </div>
-          <div class="row p">{{firstAction.text}}</div>
+          <div class="row">{{firstAction.text}}</div>
         </div>
       </div>
     </div>
 
     <div class="col-xs-4">
       <div class="row">
-        <div class="col-xs-2 ikonstorlek"><img src="img/ikoner/{{secondAction.image}}" alt="">
+        <div class="col-xs-2"><img src="img/ikoner/{{secondAction.image}}" alt="" class="ikonstorlek">
         </div>
         <div class="col-xs-10">
-          <div class="row h3">{{secondAction.title}}</div>
-          <div class="row p">{{secondAction.text}}</div>
+          <div class="row">{{secondAction.title}}</div>
+          <div class="row">{{secondAction.text}}</div>
         </div>
       </div>
     </div>
 
     <div class="col-xs-4">
       <div class="row">
-        <div class="col-xs-2 ikonstorlek"><img src="img/ikoner/{{thirdAction.image}}" alt="">
+
+        <div class="col-xs-2"><img src="img/ikoner/{{thirdAction.image}}" alt="" class="ikonstorlek">
         </div>
         <div class="col-xs-10">
-          <div class="row h3">{{thirdAction.title}}</div>
-          <div class="row p">{{thirdAction.text}}</div>
+          <div class="row">{{thirdAction.title}}</div>
+          <div class="row">{{thirdAction.text}}</div>
+
         </div>
       </div>
     </div>
 </div>
 
-    <div class="row footer">
+    <footer class="row">
       <div class="col-xs-4">
-        <div class="row h3">Green Hackathon</div>
-        <div class="row p">Detta är ett bidrag i Smart Cities Green Hackathon 2015. Utmaningen presenterades av Sweco och handlar om att konceptualisera smart stadsanvändning av sensorer.
+        <div class="row">Green Hackathon</div>
+        <div class="row">Detta är ett bidrag i Smart Cities Green Hackathon 2015. Utmaningen presenterades av Sweco och handlar om att konceptualisera smart stadsanvändning av sensorer.
         </div>
       </div>
       <div class="col-xs-4">
-        <div class="row h3">Datakällor</div>
-        <div class="row p">
+        <div class="row">Datakällor</div>
+        <div class="row">
           Data om luftkvalite kommer från Naturvårdsverket och <a href="http://www.ivl.se/sidor/omraden/miljodata/aktuella-halter-i-luft.html">Svenska miljöinstitutet</a>.
         </div>
       </div>
       <div class="col-xs-4">
-        <div class="row logostorlek"><img src="img/lugnalungan_small.png" alt="logo"></div>
-        <div class="row p">
+        <div class="row"><img src="img/lugnalungan_small.png" alt="logo" class="logostorlek"></div>
+        <div class="row">
           Vi som har skapat den här tjänsten är studenter på Linköpings universitet och kommer från Medieteknik, Kognitionsvetenskap och Grafisk design och kommunikation.
           <a href="https://se.linkedin.com/in/olivia-kassander-61714797">Olivia Kassander</a>,
           <a href="https://se.linkedin.com/in/holmise/sv">Johan Holmlund</a>,
@@ -121,8 +124,8 @@
           <a href="https://se.linkedin.com/in/eriksandren">Erik Sandrén</a>
         </div>
       </div>
-    </div>
-
+    </footer>
+</div>
     <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <!--<script type="text/javascript" src="js/main.js"></script>-->
