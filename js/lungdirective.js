@@ -14,6 +14,9 @@ angular.module('ekorrarna')
   var circleDistance = radius*2 + 2;
   var lungHeight = (radius*2 + 2)*(numberOfDots+2);
 
+  var lungImg = "img/lunga_vit.png";
+  var haloImg = "img/lunga_orange.png";
+
   var dots = [];
 
 	return {
@@ -34,6 +37,11 @@ angular.module('ekorrarna')
 
         scope.$parent.$on('newData', function() {
         	scope.updateLung();
+        	scope.updateHalo();
+      	});
+
+        scope.$parent.$on('newHalo', function() {
+        	scope.updateHalo();
       	});
 
 	      // Watch for resize event
@@ -51,16 +59,23 @@ angular.module('ekorrarna')
 				  	.duration(2000)
 					  .style("fill",scope.amountColors[rand])
 						.ease("linear");
-    			}) 
+    			})
 				}
-
 	    });
+
+	    scope.updateHalo = function() {
+				scope.halo
+					.transition()
+			  	.duration(2000)
+			  	.attr("xlink:href", scope.haloUrl)
+					.ease("linear");
+	    }
 
       scope.render = function(data) {
    
       	svg.append("image")
       		.attr("height", "100px")
-      		.attr("xlink:href", "img/lunga_vit.png")
+      		.attr("xlink:href", lungImg)
 				  .attr("width", lungHeight)
 				  .attr("height", lungHeight)
 				  .attr("x", radius)
@@ -85,6 +100,14 @@ angular.module('ekorrarna')
 					dots.push(dot);
 
 		  	})
+
+				scope.halo = svg.append("image")
+      		.attr("height", "100px")
+      		.attr("xlink:href", haloImg)
+				  .attr("width", lungHeight+3)
+				  .attr("height", lungHeight+3)
+				  .attr("x", radius)
+					.attr("y", -15);
       }
   }};
 }]);
