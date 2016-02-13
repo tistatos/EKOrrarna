@@ -50,7 +50,7 @@ angular.module('ekorrarna')
 					  .attr("width", lungHeight)
 					  .attr("height", lungHeight)
 					  .attr("x", radius)
-  					.attr("y",0);
+  					.attr("y", -10);
 
 			  	pos.forEach(item => {
 
