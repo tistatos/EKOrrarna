@@ -1,8 +1,20 @@
 // Controller
 angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', function($scope, luftdata) {
 
+    $scope.day = 1;
+    $scope.month = 1;
+    $scope.hour = 1;
+    $scope.maxData = luftdata.getMaxData();
+    $scope.avgData = luftdata.getAvgData();
+
+    $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour);
+    $scope.PM10 = {data: $scope.allData.PM10, max: $scope.maxData.PM10, avg: $scope.avgData.PM10 };
+    $scope.NO2 = {data: $scope.allData.NO2, max: $scope.maxData.NO2,  avg: $scope.avgData.NO2};
+    $scope.O3 = {data: $scope.allData.Ozon, max: $scope.maxData.O3,  avg: $scope.avgData.O3};
+    $scope.Bensen = {data: $scope.allData.Bensen, max: $scope.maxData.Bensen,  avg: $scope.avgData.Bensen};
+    $scope.CO = {data: $scope.allData.CO, max: $scope.maxData.CO,  avg: $scope.avgData.CO};
 		/*
-		Färger: 
+		Färger:
 		Lila - #592473	bensen
 		Rosa - #b10d61	co1
 		Orange - #ce5e1c	no2
@@ -33,14 +45,23 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 		$scope.amount = getRealtimeData();
 
 		$scope.amountColors = [];
-
+    $scope.increase = function() {
+      $scope.allData = luftdata.getData($scope.month,$scope.day,$scope.hour++);
+      $scope.PM10 = {data: $scope.allData.PM10, max: $scope.maxData.PM10, avg: $scope.avgData.PM10 };
+      $scope.NO2 = {data: $scope.allData.NO2, max: $scope.maxData.NO2,  avg: $scope.avgData.NO2};
+      $scope.O3 = {data: $scope.allData.Ozon, max: $scope.maxData.O3,  avg: $scope.avgData.O3};
+      $scope.Bensen = {data: $scope.allData.Bensen, max: $scope.maxData.Bensen,  avg: $scope.avgData.Bensen};
+      $scope.CO = {data: $scope.allData.CO, max: $scope.maxData.CO,  avg: $scope.avgData.CO};
+      console.log("emitted")
+      $scope.$emit('newData');
+    }
 		var u = 0;
 		var i = 0;
 		while(u < 10) {
 			var no = $scope.amount[i];
 			for(var j=0; j < no; j++) {
 				$scope.amountColors.push($scope.colors[i]);
-				u++;			
+				u++;
 			}
 			i++;
 		}
@@ -97,3 +118,4 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 			return value/maxValue*10;
 		}
 }]);
+
