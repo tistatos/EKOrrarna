@@ -70,7 +70,7 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
       "image": "salt.png"
     },
     {
-      "title": "Vid körning accelerera gradvis och följa hastighetsbestämmelsen",
+      "title": "Vid körning, accelerera gradvis och följ hastighetsbestämmelsen",
       "text": "På detta sätt minskar du utsläppen från avgaser och slitage på däck",
       "image": "acceleration.png"
     },
@@ -80,23 +80,23 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
       "image": "dack.png"
     },
     {
-      "title": "Vid körning försök att motorbromsa",
+      "title": "Vid körning, försök att motorbromsa",
       "text": "Genom att motorbromsa slits bromsarna mindre",
       "image": "motorbromsa.png"
     },
     {
-      "title": "Samåk exempelvis genom att använda skjutsgruppen.se",
+      "title": "Samåk, exempelvis genom att använda skjutsgruppen.se",
       "text": "Ett utmärkt sätt att ersätta det egna bilåkandet är att åka med andra",
       "image": "skjutsgrupp.png"
     },
     {
-      "title": "Ät närproducerat, och eller ekologiskt",
+      "title": "Ät närproducerat och eller ekologiskt",
       "text": "Vid leveranser av varor från andra länder blir det stora utsläpp, välj därför om möjligt att äta närproducerat",
       "image": "ekologiskt.png"
     },
     {
       "title": "Avstå från att skjuta fyrverkerier",
-      "text": "Många fyrverkerier innehåller ämen som inte är bra för dig eller naturen. Välj därför att avstå från att skjuta upp egna fyrverkerier",
+      "text": "Många fyrverkerier innehåller ämnen som inte är bra för dig eller naturen. Välj därför att avstå från att skjuta upp egna fyrverkerier",
       "image": "fyrverkerier.png"
     }
     ]
@@ -106,8 +106,6 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
     $scope.firstAction = $scope.actions[rand];
     $scope.secondAction = $scope.actions[(rand+1)%8];
     $scope.thirdAction = $scope.actions[(rand+2)%8];
-
-
 
 		/*
 		Färger:
