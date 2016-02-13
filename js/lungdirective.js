@@ -30,6 +30,11 @@ angular.module('ekorrarna')
 	        scope.$apply();
 	      };
 
+        scope.$parent.$on('newData', function() {
+        	scope.render();
+        	console.log("recieved");
+      	});
+
 	      // Watch for resize event
 	      scope.$watch(function() {
 	        return angular.element(window)[0].innerWidth;
