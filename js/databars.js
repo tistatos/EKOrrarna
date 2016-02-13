@@ -31,17 +31,19 @@ return {
       });
 
       scope.update = function() {
+        if(attrs.disabled)
+          return;
         var dataWidth = (scope.measurement.data/scope.measurement.max)*barWidth
         dataWidth = Math.max(0,Math.min(dataWidth,barWidth));
         scope.databar.transition().attr("width",dataWidth).duration(2000).ease("linear");
       }
 
       scope.render = function() {
-        var avgPos = (scope.measurement.avg/scope.measurement.max)*barWidth
-        var dataWidth = (scope.measurement.data/scope.measurement.max)*barWidth
-        dataWidth = Math.max(0,Math.min(dataWidth,barWidth));
-
-        //pos.forEach(item => {
+        console.log(attrs);
+        if(!attrs.disabled) {
+          var avgPos = (scope.measurement.avg/scope.measurement.max)*barWidth
+          var dataWidth = (scope.measurement.data/scope.measurement.max)*barWidth
+          dataWidth = Math.max(0,Math.min(dataWidth,barWidth));
       		var mySquare=svg.append("rect")
 						.attr("x",0)
 						.attr("y",0)
@@ -63,9 +65,18 @@ return {
             .attr("width", 3)
             .attr("height", 22)
             .style("fill", "black");
-
-        //})
-        // our custom d3 code
+        }
+        else {
+          console.log("disabled");
+      		var mySquare=svg.append("rect")
+						.attr("x",0)
+						.attr("y",0)
+            .attr("width", barWidth)
+            .attr("height", 22)
+					  .style("stroke-width", 0)
+					  .style("stroke",'#009cd8')
+					  .style("fill",'#999999');
+        }
       }
     });
   }};
