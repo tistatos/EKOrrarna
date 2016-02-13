@@ -15,7 +15,7 @@ angular.module('ekorrarna')
   var lungHeight = (radius*2 + 2)*(numberOfDots+2);
 
   var lungImg = "img/lunga_vit.png";
-  var haloImg = "img/lunga_orange.png";
+  var haloImg = "img/lunga_bla.png";
 
   var dots = [];
 
