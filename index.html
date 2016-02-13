@@ -14,18 +14,20 @@
 	</head>
 	<body ng-app='ekorrarna'>
 		<div ng-controller='mainController'>
-      <div class="row">
-        <div class="col-xs-4">
-          <lungdirective></lungdirective>
-        </div>
-        <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-6">
+        <lungdirective>
+        	<!--<img src="img/spit.png" height="100" width="100">-->
+        </lungdirective>
+      </div>
+      <div class="col-xs-6">
           <h1>Luftkvalitet i Stockholm</h1>
           <div class="row">
-            <div class="col-xs-6 lila matvarden">
+            <div class="col-xs-6 bla matvarden">
               Luftpartiklar (PM10)
               <databar measure="PM10"></databar>
             </div>
-            <div class="col-xs-6 gron matvarden">
+            <div class="col-xs-6 orange matvarden">
               Kvävedioxid (NO<sub>2</sub>)
               <databar measure="NO2"></databar>
             </div>
@@ -33,10 +35,10 @@
         </div>
         <div class="col-xs-6">
           <div class="row">
-            <div class="col-xs-6 bla matvarden">
+            <div class="col-xs-6 gron matvarden">
               Svaveldioxid (SO<sub>2</sub>)
             </div>
-            <div class="col-xs-6 rosa matvarden">
+            <div class="col-xs-6 gul matvarden">
               Ozon (O<sub>3</sub>)
               <databar measure="O3"></databar>
             </div>
@@ -44,11 +46,11 @@
         </div>
         <div class="col-xs-6">
           <div class="row">
-            <div class="col-xs-6 orange matvarden">
+            <div class="col-xs-6 rosa matvarden">
               Koldioxid (CO<sub>2</sub>)
               <databar measure="CO"></databar>
             </div>
-            <div class="col-xs-6 gul matvarden">
+            <div class="col-xs-6 lila matvarden">
               Lättflyktiga kolväten (VOC)
               <databar measure="Bensen"></databar>
             </div>
