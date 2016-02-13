@@ -104,8 +104,8 @@ angular.module('ekorrarna')
 				scope.halo = svg.append("image")
       		.attr("height", "100px")
       		.attr("xlink:href", haloImg)
-				  .attr("width", lungHeight)
-				  .attr("height", lungHeight)
+				  .attr("width", lungHeight+3)
+				  .attr("height", lungHeight+3)
 				  .attr("x", radius)
 					.attr("y", -15);
       }
