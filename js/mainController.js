@@ -50,9 +50,9 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
       color:'#b10d61',
       halo: 'img/lunga_rosa.png'
     };
-    
+
     $scope.gatheredData = [$scope.PM10, $scope.NO2, $scope.O3, $scope.Bensen, $scope.CO];
-    
+
     $scope.actions= [
     {
       "title": "Åk kollektivt",
@@ -191,17 +191,21 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 			$scope.badThings.push(($scope.allData.CO < 0) ? 0 : $scope.allData.CO);
 
       // Check if over max
-      
+
       var max = -1;
-      for(var i=1; i < $scope.gatheredData.length; i++) {
-      	if($scope.badThings[i] > $scope.gatheredData[i].avg){
-      		//if($scope.badThings[i] > max) {
+      var percentVal = 0;
+      for(var i=0; i < $scope.gatheredData.length; i++) {
+      		if($scope.badThings[i]/$scope.gatheredData[i].max > percentVal) {
       			max = i;
-      		//}
-      	}
+            percentVal = $scope.badThings[i]/$scope.gatheredData[i].max;
+      		}
       }
       if(max > -1) {
 				$scope.haloUrl = $scope.gatheredData[max].halo;
+				$scope.$emit('newHalo');
+      }
+      else {
+				$scope.haloUrl = "";
 				$scope.$emit('newHalo');
       }
 
@@ -231,9 +235,6 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 				}
 				i++;
 			}
-			console.log($scope.amount)
-			//console.log($scope.amountColors)
-
       $scope.$emit('newData');
     }
 
