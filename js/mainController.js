@@ -217,9 +217,9 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
       $scope.updateAction++
 
       if($scope.updateAction == 6) {
-        $scope.firstAction = $scope.actions[rand];
-        $scope.secondAction = $scope.actions[(rand+1)%8];
-        $scope.thirdAction = $scope.actions[(rand+2)%8];
+        $scope.firstAction = $scope.actions[rand%9];
+        $scope.secondAction = $scope.actions[(rand+1)%9];
+        $scope.thirdAction = $scope.actions[(rand+2)%9];
 
         $scope.updateAction=0
       }
