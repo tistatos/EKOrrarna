@@ -14,6 +14,8 @@ angular.module('ekorrarna')
   var circleDistance = radius*2 + 2;
   var lungHeight = (radius*2 + 2)*(numberOfDots+2);
 
+  var dots = [];
+
 	return {
 		scope: true,
 	  link: function(scope, element, attrs) {
@@ -31,7 +33,7 @@ angular.module('ekorrarna')
 	      };
 
         scope.$parent.$on('newData', function() {
-        	scope.render();
+        	scope.updateLung();
       	});
 
 	      // Watch for resize event
@@ -42,35 +44,47 @@ angular.module('ekorrarna')
 	      });
 
 	      scope.updateLung = function() {
-
-	      	svg.append("image")
-	      		.attr("height", "100px")
-	      		.attr("xlink:href", "img/lunga_vit.png")
-					  .attr("width", lungHeight)
-					  .attr("height", lungHeight)
-					  .attr("x", radius)
-  					.attr("y", -15);
-
-			  	pos.forEach(item => {
-
-			  		// Number 0-9 (random bland aktuella färger)
-						var rand = Math.floor((Math.random() * 10));
-			  		var dot=svg.append("circle")
-						  .attr("cx",(1+item.x)*circleDistance)
-						  .attr("cy",(1+item.y)*circleDistance)
-						  .attr("r",radius)
-						  .style("fill",scope.amountColors[rand]);
-
-					  dot.transition()
-  						.attr("x",320)
-  						.ease("elastic");
-
-			  	})
+    			dots.forEach(d => {
+	      	var rand = Math.floor(((Math.random())* 10));
+				  var randTrans = Math.floor((Math.random() * 4000));
+						d.transition()
+				  	.duration(2000)
+					  .style("fill",scope.amountColors[rand])
+						.ease("linear");
+    			}) 
 				}
+
 	    });
 
       scope.render = function(data) {
-      	scope.updateLung();
+   
+      	svg.append("image")
+      		.attr("height", "100px")
+      		.attr("xlink:href", "img/lunga_vit.png")
+				  .attr("width", lungHeight)
+				  .attr("height", lungHeight)
+				  .attr("x", radius)
+					.attr("y", -15);
+
+		  	pos.forEach(item => {
+
+		  		// Number 0-9 (random bland aktuella färger)
+					var rand = Math.floor((Math.random() * 10));
+		  		var dot=svg.append("circle")
+					  .attr("cx",(1+item.x)*circleDistance)
+					  .attr("cy",(1+item.y)*circleDistance)
+					  .attr("r",0)
+					  .style("fill",scope.amountColors[rand]);
+
+				  var randTrans = Math.floor((Math.random() * 4000));
+				  dot.transition()
+				  	.duration(randTrans)
+						.attr("r",radius)
+						.ease("elastic");
+
+					dots.push(dot);
+
+		  	})
       }
   }};
 }]);
