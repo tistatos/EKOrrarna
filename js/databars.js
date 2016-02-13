@@ -47,7 +47,7 @@ return {
 						.attr("y",0)
             .attr("width", barWidth)
             .attr("height", 22)
-					  .style("stroke-width",2)
+					  .style("stroke-width", 0)
 					  .style("stroke",'#009cd8')
 					  .style("fill",'#dddddd');
 

@@ -55,11 +55,15 @@ angular.module('ekorrarna')
 
 			  		// Number 0-9 (random bland aktuella färger)
 						var rand = Math.floor((Math.random() * 10));
-			  		var mySquare=svg.append("circle")
+			  		var dot=svg.append("circle")
 						  .attr("cx",(1+item.x)*circleDistance)
 						  .attr("cy",(1+item.y)*circleDistance)
 						  .attr("r",radius)
 						  .style("fill",scope.amountColors[rand]);
+
+					  dot.transition()
+  						.attr("x",320)
+  						.ease("elastic");
 
 			  	})
 				}
