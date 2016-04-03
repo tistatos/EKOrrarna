@@ -156,7 +156,7 @@ angular.module('ekorrarna').controller('mainController', ['$scope', 'luftdata', 
 		$scope.amountColors = [];
     $interval(function() {
       $scope.increase();
-    },5000);
+    },8000);
 
 		var u = 0;
 		var i = 0;
